@@ -51,8 +51,13 @@ public class AddActivity extends AppCompatActivity {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                     String substr = sdf.format(date);
+                    Toast.makeText(AddActivity.this, "저장 되었습니다.", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(AddActivity.this, str+", "+substr, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("main",str);
+                    intent.putExtra("sub",substr);
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
             }
         });
