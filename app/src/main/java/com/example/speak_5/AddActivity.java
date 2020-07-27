@@ -36,9 +36,7 @@ public class AddActivity extends AppCompatActivity {
         btnback.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("main", editText.getText());
-                startActivity(intent);
+                finish();
             }
         });
         btnsave.setOnClickListener(new View.OnClickListener(){
@@ -48,7 +46,7 @@ public class AddActivity extends AppCompatActivity {
 
                 if(str.length() > 0){
                     Date date = new Date();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
 
                     String substr = sdf.format(date);
                     Toast.makeText(AddActivity.this, "저장 되었습니다.", Toast.LENGTH_SHORT).show();
