@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
-    Button btnAdd;
+    FloatingActionButton make_Note_Buttom;
     List<Memo> memoList;
 
     @Override
@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         memoList = new ArrayList<>();
-
+        memoList.add(new Memo("hi","hi",1));
+        memoList.add(new Memo("hi","hi2",2));
+        memoList.add(new Memo("hi","hi3",3));
         recyclerView = findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -48,12 +50,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerAdapter = new RecyclerAdapter(memoList);
         recyclerView.setAdapter(recyclerAdapter);
 
-        btnAdd = findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(new View.OnClickListener(){
+
+
+        make_Note_Buttom = findViewById(R.id.make_note_buttom);
+        make_Note_Buttom.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AddActivity.class);
-                startActivity(intent);
+                try {
+                    Intent intent = new Intent(getApplicationContext(),AddActivity.class);
+                    startActivity(intent);
+                }catch(Exception e){
+                    Log.d("error","intentError");
+                }
             }
         });
     }
@@ -96,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             Memo memo = listdata.get(i);
 
             itemViewHolder.maintext.setText(memo.getMaintext());
-            itemViewHolder.subtext.setText(memo.getMaintext());
+            itemViewHolder.subtext.setText(memo.getSubtext());
         }
 
         void addItem(Memo memo){

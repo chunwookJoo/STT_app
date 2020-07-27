@@ -11,7 +11,6 @@
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:id="@+id/edtMemo"
-        android:inputType="text"
         android:hint="저장하실 내용을 말씀하세요"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -24,7 +23,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_below="@+id/btnBack"
+            android:id="@+id/btnBack"
             android:layout_marginRight="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -32,7 +31,7 @@
             android:text="cancel"/>
 
         <Button
-            android:layout_below="@+id/btnSave"
+            android:id="@+id/btnSave"
             android:layout_marginLeft="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,15 +15,33 @@ import java.util.Date;
 public class AddActivity extends AppCompatActivity {
 
     EditText editText;
+    Button btnback;
+    Button btnsave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_add);
 
+            Setting();
+            AddListener();
+    }
+    void Setting(){
         editText = findViewById(R.id.edtMemo);
+        btnback = findViewById(R.id.btnBack);
+        btnsave = findViewById(R.id.btnSave);
+    }
 
-        findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener(){
+    void AddListener(){
+        btnback.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("main", editText.getText());
+                startActivity(intent);
+            }
+        });
+        btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 String str = editText.getText().toString();
@@ -32,20 +51,9 @@ public class AddActivity extends AppCompatActivity {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                     String substr = sdf.format(date);
-                    Toast.makeText(AddActivity.this,str + ", "+ substr, Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent();
-                    intent.putExtra("main",str);
-                    intent.putExtra("sub",substr);
-                    setResult(0,intent);
-                    finish();
+                    Toast.makeText(AddActivity.this, str+", "+substr, Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }
