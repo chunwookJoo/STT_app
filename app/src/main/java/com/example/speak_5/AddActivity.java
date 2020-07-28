@@ -57,9 +57,7 @@ public class AddActivity extends AppCompatActivity {
         btnback.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("main", editText.getText());
-                startActivity(intent);
+                finish();
             }
         });
         btnsave.setOnClickListener(new View.OnClickListener(){
