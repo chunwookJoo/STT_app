@@ -8,6 +8,9 @@ public class Memo implements Serializable {
     String subtext;
     int isdone;
 
+    public Memo(){
+
+    }
     public Memo(String maintext, String subtext, int isdone) {
         this.maintext = maintext;
         this.subtext = subtext;

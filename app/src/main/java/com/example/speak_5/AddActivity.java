@@ -39,7 +39,7 @@ public class AddActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "저장할 내용을 말씀해주세요.", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "저장하실 내용을 말씀해주세요.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 VoiceTask voiceTask = new VoiceTask();
